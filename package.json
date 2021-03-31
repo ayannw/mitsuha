@@ -1,6 +1,6 @@
 {
     "name": "mitsuha-snapshot",
-    "version": "2.0.0-dev",
+    "version": "2.0.1-dev",
     "main": "dist/Mitsuha.js",
     "imports": {
         "#lib/*": "./dist/lib/*",
@@ -25,6 +25,7 @@
         "@sapphire/ts-config": "^2.1.0",
         "@types/node": "^14.14.37",
         "@types/node-fetch": "^2.5.8",
+        "@types/ws": "^7.4.0",
         "@typescript-eslint/eslint-plugin": "^4.20.0",
         "@typescript-eslint/parser": "^4.20.0",
         "eslint": "^7.23.0",
