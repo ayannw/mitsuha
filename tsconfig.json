@@ -1,17 +1,18 @@
 {
-    "extends": "@sapphire/ts-config",
     "compilerOptions": {
         "outDir": "dist",
         "baseUrl": "src",
         "downlevelIteration": true,
         "strictNullChecks": false,
         "module": "ES2020",
+        "moduleResolution": "node",
         "paths": {
             "#root/*": ["./*"],
             "#lib/*": ["./lib/*"],
             "#types/*": ["./lib/types/*"],
             "#utils/*": ["./lib/utils/*"],
-            "#handlers/*": ["./lib/handlers/*"]
+            "#handlers/*": ["./lib/handlers/*"],
+            "#builders/*": ["./lib/builders/*"]
         }
     },
     "include": ["src"]

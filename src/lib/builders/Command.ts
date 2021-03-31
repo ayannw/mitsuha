@@ -1,7 +1,7 @@
 import type { MitsuhaClient, Message } from '../MitsuhaClient';
 
 interface Exec {
-    (client: MitsuhaClient, message: Message, args: string[]):
+    (client: MitsuhaClient, message: Message, args?: string[]):
         | Promise<void | Message>
         | Message
         | void
