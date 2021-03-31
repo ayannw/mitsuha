@@ -4,6 +4,7 @@
         "outDir": "dist",
         "baseUrl": "src",
         "downlevelIteration": true,
+        "strictNullChecks": false,
         "module": "ES2020",
         "paths": {
             "#root/*": ["./*"],
