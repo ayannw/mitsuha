@@ -10,5 +10,5 @@ export const start = (port: number): void => {
 
     const server = http.createServer(requestListener);
     server.listen(port);
-    success('server started: http://0.0.0.0:' + String(port));
+    success('server started: http://0.0.0.0:' + String(port) + '/');
 };
