@@ -1,4 +1,5 @@
 import type { MitsuhaClient, Message } from '#lib/MitsuhaClient';
+import type { Command } from '#builders/Command';
 import { error } from '#lib/logger';
 
 const execMessage = (client: MitsuhaClient, message: Message) => {
@@ -23,6 +24,7 @@ const execMessage = (client: MitsuhaClient, message: Message) => {
 
         cmd = args[0];
         args = args.join(' ').replace(cmd, '').split(' ');
+        args.shift();
     }
 
     return {
@@ -41,10 +43,12 @@ export const execCommand = async (client: MitsuhaClient, message: Message) => {
     if (!res.swp) return;
 
     console.log(res);
-    const command = commands.find(
-        (c) => c.name === res.cmd || new Set(c.aliases).has(res.cmd)
-    );
+    const command: Command | false =
+        commands.find(
+            (c) => c.name === res.cmd || new Set(c.aliases).has(res.cmd)
+        ) || false;
 
+    if (!command) return;
     try {
         if (command.ownerOnly) {
             const isOwner = new Set(client.config.owners).has(
@@ -56,6 +60,6 @@ export const execCommand = async (client: MitsuhaClient, message: Message) => {
 
         return command.exec(client, message, res.args);
     } catch (e) {
-        return error('unable to execute command from message: ' + e);
+        return error('unable to execute command ' + command + ' : ' + e);
     }
 };
