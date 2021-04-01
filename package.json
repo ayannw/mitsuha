@@ -12,7 +12,7 @@
         "build": "tsc -b .",
         "watch": "tsc -b . -W",
         "lint": "prettier . -w && eslint --fix src --ext ts",
-        "start": "nodemon --es-module-specifier-resolution=node .",
+        "start": "clear; nodemon --es-module-specifier-resolution=node .",
         "refresh": "rm -rf dist && yarn build"
     },
     "repository": "https://github.com/ayannw/mitsuha-snapshot.git",
