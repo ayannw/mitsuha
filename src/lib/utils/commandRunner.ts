@@ -1,8 +1,9 @@
 import type { MitsuhaClient, Message } from '#lib/MitsuhaClient';
 import type { Command } from '#builders/Command';
-import { error } from '#lib/logger';
+import { error, msgLog } from '#lib/logger';
 
 const execMessage = (client: MitsuhaClient, message: Message) => {
+    msgLog(message);
     const ctx = message.content.trim();
 
     let swp = false;
@@ -16,13 +17,9 @@ const execMessage = (client: MitsuhaClient, message: Message) => {
         swp = true;
 
     if (swp) {
-        args = ctx
-            .toLowerCase()
-            .replace(client.config.prefix, '')
-            .trim()
-            .split(/ +/);
+        args = ctx.replace(client.config.prefix, '').trim().split(/ +/);
 
-        cmd = args[0];
+        cmd = args[0].toLowerCase();
         args = args.join(' ').replace(cmd, '').split(' ');
         args.shift();
     }

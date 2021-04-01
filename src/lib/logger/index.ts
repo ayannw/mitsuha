@@ -1,4 +1,5 @@
-import { green, blue, yellow, red, gray } from 'colorette';
+import { green, blue, yellow, red, gray, underline } from 'colorette';
+import type { Message } from '#lib/MitsuhaClient';
 
 const succLog = ' SUCCESS ';
 const infoLog = ' INFO    ';
@@ -27,14 +28,14 @@ const updateTime = (): string => {
     return time;
 };
 
-const format = (logType: string, text: string): any => {
+const format = (logType: string, text?: string, message?: Message): any => {
     const time = gray(updateTime()) + ' ';
     switch (logType) {
         case 'success':
             return time + green(succLog) + '  ' + text;
             break;
         case 'info':
-            return time + blue(infoLog);
+            return time + blue(infoLog) + '  ' + text;
             break;
         case 'warn':
             return time + yellow(warnLog) + '  ' + text;
@@ -42,6 +43,20 @@ const format = (logType: string, text: string): any => {
         case 'error':
             return time + red(errrLog) + '  ' + text;
             break;
+        case 'message':
+            return (
+                time +
+                ' ' +
+                blue(infoLog) +
+                underline(message.guild.name) +
+                //@ts-ignore
+                underline('#' + message.channel.name) +
+                '  ' +
+                blue(message.author.tag) +
+                ': \n' +
+                '                       ' +
+                message.content
+            );
     }
 };
 
@@ -56,4 +71,7 @@ export const warn = (text: string): void => {
 };
 export const error = (text: string): void => {
     return console.log(format('error', text));
+};
+export const msgLog = (message: Message): void => {
+    return console.log(format('message', '', message));
 };
