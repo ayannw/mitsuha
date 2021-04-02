@@ -39,7 +39,6 @@ export const execCommand = async (client: MitsuhaClient, message: Message) => {
 
     if (!res.swp) return;
 
-    console.log(res);
     const command: Command | false =
         commands.find(
             (c) => c.name === res.cmd || new Set(c.aliases).has(res.cmd)
