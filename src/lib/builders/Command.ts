@@ -42,7 +42,9 @@ export class Command implements Command {
 
         opts.aliases ? (this.aliases = opts.aliases) : null;
         opts.permissions ? (this.permissions = opts.permissions) : null;
-        opts.permissionError? (this.permissionError = opts.permissionError) : null;
+        opts.permissionError
+            ? (this.permissionError = opts.permissionError)
+            : null;
         opts.ownerOnly ? (this.ownerOnly = true) : null;
     }
 }

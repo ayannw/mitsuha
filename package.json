@@ -11,7 +11,9 @@
     "scripts": {
         "build": "tsc -b .",
         "watch": "tsc -b . -W",
-        "lint": "prettier . -w && eslint --fix src --ext ts",
+        "lint": "yarn lint:pretty && yarn lint:eslint",
+        "lint:pretty": "prettier . -w",
+        "lint:eslint": "eslint --fix src --ext ts",
         "start": "clear; nodemon --es-module-specifier-resolution=node .",
         "refresh": "rm -rf dist && yarn build"
     },
