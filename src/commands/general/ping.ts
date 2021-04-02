@@ -9,9 +9,15 @@ export const command: Command = new Command(
         category: 'general',
     },
     (client: MitsuhaClient, message: Message) => {
-        return message.channel.send('?').then(m => {
-        	const ping = String(m.createdTimestamp - message.createdTimestamp)
-        	m.edit('Pong! Latency: `' + ping + '`ms, heartbeat: `' + String(client.ws.ping) + '`ms')
+        return message.channel.send('?').then((m) => {
+            const ping = String(m.createdTimestamp - message.createdTimestamp);
+            m.edit(
+                'Pong! Latency: `' +
+                    ping +
+                    '`ms, heartbeat: `' +
+                    String(client.ws.ping) +
+                    '`ms'
+            );
         });
     }
 );
