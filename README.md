@@ -21,14 +21,14 @@
 <ol>
     <h3 id="setup">Setup</h3>
     <li>
-        <b>Clone the repo:</b>
+        <b>Clone the repo:</b> <br/>
         <code
             >git clone https://github.com/ayannw/mitsuha.git <br />
             cd mitsuha
         </code>
     </li>
     <li>
-        <b>Install dependencies</b>
+        <b>Install dependencies</b> <br/>
         <code>yarn install #use `npm i` if you don't have yarn installed.</code>
     </li>
     <li>
@@ -40,7 +40,7 @@
         <code> DISCORD_TOKEN="&lt;Paste your token here&gt;" </code>
     </li>
     <li>
-        <b>Run the bot</b>
+        <b>Run the bot</b> <br/>
         <code> yarn start #alt: `npm run start` </code> <br />
         Your bot is online now!
     </li>
