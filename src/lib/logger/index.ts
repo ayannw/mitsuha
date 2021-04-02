@@ -46,7 +46,7 @@ const format = (logType: string, text?: string, message?: Message): any => {
         case 'message':
             return (
                 time +
-                ' ' +
+                '  ' +
                 blue(infoLog) +
                 underline(message.guild.name) +
                 //@ts-ignore
