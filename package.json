@@ -40,7 +40,7 @@
         "@sapphire/time-utilities": "^1.2.11",
         "@sapphire/utilities": "^1.4.6",
         "colorette": "^1.2.2",
-        "discord.js": "^12.5.2",
+        "discord.js": "^12.5.3",
         "dotenv": "^8.2.0",
         "node-fetch": "^2.6.1"
     }
