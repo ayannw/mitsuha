@@ -14,7 +14,7 @@
         "lint": "yarn lint:pretty && yarn lint:eslint",
         "lint:pretty": "prettier . -w",
         "lint:eslint": "eslint --fix src --ext ts",
-        "start": "clear; nodemon --es-module-specifier-resolution=node .",
+        "start": "clear; nodemon --unhandled-rejections=strict --es-module-specifier-resolution=node .",
         "refresh": "rm -rf dist && yarn build"
     },
     "repository": "https://github.com/ayannw/mitsuha-snapshot.git",

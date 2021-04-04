@@ -1,10 +1,9 @@
-
-
 <img
     height="180px"
     src="media/image.png"
     align="right"
 />
+
 <h1 id="Mitsuha">Mitsuha</h1>
 
 <div>

@@ -1,4 +1,12 @@
-import { green, blue, yellow, red, gray, underline } from 'colorette';
+import {
+    bgGreen,
+    bgBlue,
+    bgYellow,
+    bgRed,
+    blue,
+    gray,
+    underline,
+} from 'colorette';
 import type { Message } from '#lib/MitsuhaClient';
 
 const succLog = ' SUCCESS ';
@@ -32,16 +40,16 @@ const format = (logType: string, text?: string, message?: Message): any => {
     const time = gray(updateTime()) + ' ';
     switch (logType) {
         case 'success':
-            return time + green(succLog) + '  ' + text;
+            return time + bgGreen(succLog) + '  ' + text;
             break;
         case 'info':
-            return time + blue(infoLog) + '  ' + text;
+            return time + bgBlue(infoLog) + '  ' + text;
             break;
         case 'warn':
-            return time + yellow(warnLog) + '  ' + text;
+            return time + bgYellow(warnLog) + '  ' + text;
             break;
         case 'error':
-            return time + red(errrLog) + '  ' + text;
+            return time + bgRed(errrLog) + '  ' + text;
             break;
         case 'message':
             return (

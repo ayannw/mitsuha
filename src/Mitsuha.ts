@@ -25,7 +25,12 @@ const start = () => {
     setTimeout((): void => {
         server.start(6969);
         sw.start();
-        client.login(token);
+        try {
+            client.login(token);
+        } catch (err) {
+            logger.error(err);
+            process.exit(1);
+        }
     }, 100);
 };
 
