@@ -10,6 +10,7 @@ interface Exec {
 interface CommandOptions {
     aliases?: string[];
     help?: string;
+    nsfw?: boolean;
     category?: string;
     permissions?: string[];
     permissionError?: string;
@@ -28,18 +29,20 @@ export class Command implements Command {
     public exec: Exec;
     public aliases: string[];
     public help: string;
+    public nsfw: boolean;
     public category: string;
     public permissions: string[];
     public permissionError: string;
     public ownerOnly: boolean;
 
     public constructor(name: string, opts: CommandOptions, exec: Exec) {
-        this.__type = 'Command';
+        this.__type = 'MitsuhaCommand';
         this.name = name;
         this.exec = exec;
         this.help = opts.help || '*Description unavailable.*';
         this.category = opts.category || 'Uncategorized';
 
+        opts.nsfw ? (this.nsfw = opts.nsfw) : null;
         opts.aliases ? (this.aliases = opts.aliases) : null;
         opts.permissions ? (this.permissions = opts.permissions) : null;
         opts.permissionError
