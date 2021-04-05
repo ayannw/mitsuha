@@ -36,7 +36,7 @@
     },
     "dependencies": {
         "@sapphire/discord.js-utilities": "^1.5.2",
-        "@sapphire/stopwatch": "^1.0.6",
+        "@sapphire/stopwatch": "^1.0.7",
         "@sapphire/time-utilities": "^1.2.11",
         "@sapphire/utilities": "^1.4.6",
         "colorette": "^1.2.2",
