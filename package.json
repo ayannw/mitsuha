@@ -38,7 +38,7 @@
         "@sapphire/discord.js-utilities": "^1.5.2",
         "@sapphire/stopwatch": "^1.0.6",
         "@sapphire/time-utilities": "^1.2.11",
-        "@sapphire/utilities": "^1.4.6",
+        "@sapphire/utilities": "^1.4.7",
         "colorette": "^1.2.2",
         "discord.js": "^12.5.3",
         "dotenv": "^8.2.0",
