@@ -1,9 +1,8 @@
 import {
-    bgGreen,
-    bgBlue,
-    bgYellow,
-    bgRed,
+    green,
     blue,
+    yellow,
+    red,
     gray,
     underline,
 } from 'colorette';
@@ -40,16 +39,16 @@ const format = (logType: string, text?: string, message?: Message): any => {
     const time = gray(updateTime()) + ' ';
     switch (logType) {
         case 'success':
-            return time + bgGreen(succLog) + '  ' + text;
+            return time + green(succLog) + '  ' + text;
             break;
         case 'info':
-            return time + bgBlue(infoLog) + '  ' + text;
+            return time + blue(infoLog) + '  ' + text;
             break;
         case 'warn':
-            return time + bgYellow(warnLog) + '  ' + text;
+            return time + yellow(warnLog) + '  ' + text;
             break;
         case 'error':
-            return time + bgRed(errrLog) + '  ' + text;
+            return time + red(errrLog) + '  ' + text;
             break;
         case 'message':
             return (
