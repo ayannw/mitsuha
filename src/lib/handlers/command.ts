@@ -4,9 +4,10 @@ import type { Command } from '#builders/Command';
 import { Collection } from 'discord.js';
 import { readdir } from 'fs';
 
-const _getCommands = async () => {
+const path: string = process.cwd() + '/dist/commands/';
+
+export const _getCommands = async (): Promise<Collection<string, Command>> => {
     const cmds: Collection<string, Command> = new Collection();
-    const path: string = process.cwd() + '/dist/commands/';
 
     const commands = await new Promise((resolve, reject) =>
         readdir(path, (e, ls) =>
@@ -33,4 +34,15 @@ const _getCommands = async () => {
     return cmds;
 };
 
+const cats: string[] = [];
+
+(() => {
+    readdir(path, (e, ls) => {
+        if (e) throw e;
+
+        ls.forEach((i) => cats.push(i));
+    });
+})();
+
+export const categories = cats;
 export const commands = _getCommands();
