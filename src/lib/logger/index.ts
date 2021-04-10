@@ -1,11 +1,4 @@
-import {
-    green,
-    blue,
-    yellow,
-    red,
-    gray,
-    underline,
-} from 'colorette';
+import { green, blue, yellow, red, gray, underline } from 'colorette';
 import type { Message } from '#lib/MitsuhaClient';
 
 const succLog = ' SUCCESS ';

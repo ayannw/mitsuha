@@ -41,11 +41,16 @@ export const execCommand = async (client: MitsuhaClient, message: Message) => {
 
     const command: Command | false =
         commands.find(
-            (c) => c.name === res.cmd || new Set(c.aliases).has(res.cmd)
+            (c) => c.name === res.cmd || c.aliases.includes(res.cmd)
         ) || false;
 
     if (!command) return;
     try {
+        if (command.nsfw) {
+            return message.channel.send(
+                'Can not execute NSFW commands in this channel!'
+            );
+        }
         if (command.ownerOnly) {
             const isOwner = new Set(client.config.owners).has(
                 message.author.id
