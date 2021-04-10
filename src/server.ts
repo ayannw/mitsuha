@@ -1,14 +1,12 @@
-import * as http from 'http';
+import express from 'express';
 import { success } from '#lib/logger';
 
-export const start = (port: number): void => {
-    //@ts-ignore
-    const requestListener = (req, res) => {
-        res.writeHead(200);
-        res.end('online');
-    };
+const app = express();
 
-    const server = http.createServer(requestListener);
-    server.listen(port);
-    success('server started: http://0.0.0.0:' + String(port) + '/');
+app.use(express.static(process.cwd() + '/website'));
+
+export const start = (port: number): void => {
+    app.listen(port, () => {
+        success('server started: http://0.0.0.0:' + String(port) + '/');
+    });
 };

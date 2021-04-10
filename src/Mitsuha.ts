@@ -45,3 +45,5 @@ client.on('message', async (message) => {
 });
 
 start();
+
+export const mitsuha = client;

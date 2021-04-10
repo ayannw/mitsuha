@@ -14,7 +14,7 @@ export const command: Command = new Command(
         const commands = await client.commands;
 
         let list = '';
-        let em: MessageEmbed = new MessageEmbed()
+        const em: MessageEmbed = new MessageEmbed()
             .setAuthor('Displaying help', client.user.displayAvatarURL())
             .setColor(client.config.colors.normal)
             .setFooter(
@@ -29,7 +29,7 @@ export const command: Command = new Command(
             list += '❯ **' + cmd.name + '**: ' + cmd.help + '\n';
         });
 
-        em.setDescription(list)
+        em.setDescription(list);
         list = '';
 
         return message.channel.send(em);
