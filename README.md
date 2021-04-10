@@ -8,6 +8,8 @@
 # Mitsuha
 Multi-purpose Discord bot built with TypeScript and Discord.js.
 
+<hr />
+
 ## Setup
 ### Requirements:
 
