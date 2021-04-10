@@ -10,6 +10,11 @@ Multi-purpose Discord bot built with TypeScript and Discord.js.
 
 <hr />
 
+![](http://ForTheBadge.com/images/badges/built-with-love.svg)
+
+<a href="https://discord.com/oauth2/authorize?client_id=749640517549293729&amp;permissions=205323366&amp;scope=bot">🔗 Invite to server</a> |
+<a href="https://discord.gg/6Pwak89TTg">🔗 Join support server</a></p>
+
 ## Setup
 ### Requirements:
 
