@@ -1,6 +1,7 @@
 import { MitsuhaClient, Message } from '#lib/MitsuhaClient';
 import { Command } from '#builders/Command';
 import { MessageEmbed } from 'discord.js';
+import { embedItem as item } from '#utils/MitsuhaEmbed';
 
 export const command: Command = new Command(
     'help',
@@ -37,7 +38,7 @@ export const command: Command = new Command(
         }
 
         commands.forEach((cmd) => {
-            list += '❯ **' + cmd.name + '**: ' + cmd.help + '\n';
+            list += item(cmd.name, cmd.help);
         });
 
         em.setDescription(list);
