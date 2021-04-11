@@ -5,7 +5,7 @@ import { MessageEmbed } from 'discord.js';
 export const command: Command = new Command(
     'help',
     {
-        category: 'general',
+        category: 'misc',
         aliases: ['cmds', 'cmdlist', 'commands'],
         help: 'A list of my commands or the description of one.',
     },
