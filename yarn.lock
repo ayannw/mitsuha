@@ -101,6 +101,11 @@
   dependencies:
     "@sapphire/utilities" "^1.4.7"
 
+"@sapphire/type@^1.1.7":
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@sapphire/type/-/type-1.1.7.tgz#149abfbe9072b2af03c991af823d58b78c72759b"
+  integrity sha512-JzxmwjAahDbwq4VdytmLUv4PpbqUpvWnbhoSbZ5AqejG5YjXgM7t/QI1n7ih7841mIptO2Xp0eAOwZxeTQ8hNw==
+
 "@sapphire/utilities@^1.4.6", "@sapphire/utilities@^1.4.7":
   version "1.4.7"
   resolved "https://registry.yarnpkg.com/@sapphire/utilities/-/utilities-1.4.7.tgz#4668b57918fe773502087e63025f5ec84f670059"

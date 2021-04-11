@@ -70,13 +70,13 @@ export const __MitsuhaClient__ = (client: Client): MitsuhaClient => {
                 total: {
                     raw: process.memoryUsage().heapTotal,
                     str:
-                        String(process.memoryUsage().heapTotal / 1048576) +
+                        String(process.memoryUsage().heapTotal / 1048576).substring(0, 4) +
                         'mb',
                 },
                 used: {
                     raw: process.memoryUsage().heapUsed,
                     str:
-                        String(process.memoryUsage().heapUsed / 1048576) + 'mb',
+                        String(process.memoryUsage().heapUsed / 1048576).substring(0, 4) + 'mb',
                 },
             },
             uptimes: {
