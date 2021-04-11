@@ -7,10 +7,9 @@ export const command: Command = new Command(
     {
         category: 'general',
         aliases: ['cmds', 'cmdlist', 'commands'],
-        help: 'A list of my commands.',
+        help: 'A list of my commands or the description of one.',
     },
     async (client: MitsuhaClient, message: Message, args: string[]) => {
-        //const c: string | null = args[0] || null;
         const commands = await client.commands;
 
         let list = '';
@@ -24,6 +23,18 @@ export const command: Command = new Command(
                 })
             )
             .setTimestamp();
+
+        if (args[0]) {
+            const cmd: Command | null =
+                commands.find(
+                    (c) => c.name === args[0] || c.aliases.includes(args[0])
+                ) || null;
+
+            if (!cmd)
+                return message.channel.send(
+                    'Unable to find command `' + args[0] + '`.'
+                );
+        }
 
         commands.forEach((cmd) => {
             list += '❯ **' + cmd.name + '**: ' + cmd.help + '\n';

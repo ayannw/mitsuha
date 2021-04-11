@@ -1,4 +1,5 @@
 import type { MitsuhaClient, Message } from '../MitsuhaClient';
+import { prefix } from '#root/config';
 
 interface Exec {
     (client: MitsuhaClient, message: Message, args?: string[]):
@@ -10,6 +11,7 @@ interface Exec {
 interface CommandOptions {
     aliases?: string[];
     help?: string;
+    usage?: string;
     nsfw?: boolean;
     category?: string;
     permissions?: string[];
@@ -29,6 +31,7 @@ export class Command implements Command {
     public exec: Exec;
     public aliases: string[];
     public help: string;
+    public usage: string;
     public nsfw: boolean;
     public category: string;
     public permissions: string[];
@@ -40,6 +43,7 @@ export class Command implements Command {
         this.name = name;
         this.exec = exec;
         this.help = opts.help || '*Description unavailable.*';
+        this.usage = `${prefix}${opts.usage}` || `${prefix}${this.name}`;
         this.category = opts.category || 'Uncategorized';
 
         opts.nsfw ? (this.nsfw = opts.nsfw) : null;

@@ -6,3 +6,4 @@ export const colors = {
     error: '#FF004A',
     success: '#03FF00',
 };
+export const repoURL = 'https://github.com/ayannw/mitsuha-snapshot';
