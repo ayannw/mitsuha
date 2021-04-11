@@ -30,7 +30,7 @@ export const command: Command = new Command(
 
             if (!cmd.res && cmd.closest)
                 return message.channel.send(
-                    'Unable to find command `' +
+                    'Unknown command `' +
                         args[0] +
                         '`, did you mean `' +
                         cmd.closest +
@@ -39,7 +39,7 @@ export const command: Command = new Command(
 
             if (!cmd.res && !cmd.closest)
                 return message.channel.send(
-                    'Unable to find command `' + args[0] + '`'
+                    'Unknown command `' + args[0] + '`'
                 );
         }
 
