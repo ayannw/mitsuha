@@ -1,6 +1,7 @@
 import { commands } from './handlers/command';
 import { DurationFormatter } from '@sapphire/time-utilities';
 import { uptime } from 'os';
+import { closest } from 'fastest-levenshtein';
 import type { Client, Collection } from 'discord.js';
 import type { Message as M } from 'discord.js';
 import type { Command } from './builders/Command';
@@ -12,8 +13,7 @@ interface RawStr {
     raw: number;
     str: string;
 }
-
-export interface MitsuhaStats {
+interface MitsuhaStats {
     commands: number;
     users: number;
     guilds: string[];
@@ -26,10 +26,15 @@ export interface MitsuhaStats {
         host: RawStr;
     };
 }
+interface CommandSearchRes {
+    res: Command | null;
+    closest: string | undefined;
+}
 
 export interface MitsuhaClient extends Client {
     name: string;
     commands: Promise<Collection<string, Command>>;
+    getCommand: (keyword: string) => Promise<CommandSearchRes>;
     stats: () => Promise<MitsuhaStats>;
     config: any;
 }
@@ -39,6 +44,18 @@ export const __MitsuhaClient__ = (client: Client): MitsuhaClient => {
 
     _.name = 'Mitsuha';
     _.commands = commands;
+    _.getCommand = async (keyword: string): Promise<CommandSearchRes> => {
+        const _cmds = await _.commands;
+        const cmds = _cmds.map((c) => c.name);
+
+        return {
+            res:
+                _cmds.find(
+                    (c) => c.name == keyword || c.aliases.includes(keyword)
+                ) || null,
+            closest: closest(keyword, cmds),
+        };
+    };
     _.config = conf;
     _.stats = async () => {
         const cmds = await _.commands;

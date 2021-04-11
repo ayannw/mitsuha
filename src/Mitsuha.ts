@@ -34,7 +34,7 @@ const start = () => {
     }, 100);
 };
 
-client.once('ready', (): void => {
+client.once('ready', () => {
     logger.success('logged in as ' + client.user.tag);
     const t = sw.stop().toString();
     logger.info('took ' + t + ' to login');

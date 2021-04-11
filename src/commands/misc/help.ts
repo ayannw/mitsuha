@@ -26,14 +26,20 @@ export const command: Command = new Command(
             .setTimestamp();
 
         if (args[0]) {
-            const cmd: Command | null =
-                commands.find(
-                    (c) => c.name === args[0] || c.aliases.includes(args[0])
-                ) || null;
+            const cmd = await client.getCommand(args[0]);
 
-            if (!cmd)
+            if (!cmd.res && cmd.closest)
                 return message.channel.send(
-                    'Unable to find command `' + args[0] + '`.'
+                    'Unable to find command `' +
+                        args[0] +
+                        '`, did you mean `' +
+                        cmd.closest +
+                        '` ?'
+                );
+
+            if (!cmd.res && !cmd.closest)
+                return message.channel.send(
+                    'Unable to find command `' + args[0] + '`'
                 );
         }
 
