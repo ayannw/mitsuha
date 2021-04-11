@@ -39,7 +39,7 @@ export const command: Command = new Command(
             em.setColor(client.config.colors.normal)
                 .addField(
                     '\u200B',
-                    `[/src/commands/${cmd.category}/${cmd.name}.ts](${client.config.repoURL}/blob/main/src/commands/${cmd.category}/${cmd.name}.ts)`
+                    ` 📁 __[/src/commands/${cmd.category}/${cmd.name}.ts](${client.config.repoURL}/blob/main/src/commands/${cmd.category}/${cmd.name}.ts)__`
                 )
                 .setDescription('`'.repeat(3) + 'ts\n' + file + '`'.repeat(3));
 
