@@ -6,7 +6,8 @@
         "#lib/*": "./dist/lib/*",
         "#root/*": "./dist/*",
         "#builders/*": "./dist/lib/builders/*",
-        "#handlers/*": "./dist/lib/handlers/*"
+        "#handlers/*": "./dist/lib/handlers/*",
+        "#utils/*": "./dist/lib/utils/*"
     },
     "scripts": {
         "build": "tsc -b .",

@@ -1,18 +1,7 @@
 import { MitsuhaClient, Message } from '#lib/MitsuhaClient';
 import { Command } from '#builders/Command';
 import { MessageEmbed } from 'discord.js';
-import { readFileSync } from 'fs';
-import glob from 'glob';
-
-const { sync } = glob;
-const files: Map<string, string> = new Map();
-
-sync(process.cwd() + '/src/commands/**/*.*').forEach((file) => {
-    const fname = file.split('commands/')[1].split('/')[1].replace('.ts', '');
-    const content = readFileSync(file, 'utf-8');
-
-    files.set(fname, content);
-});
+import files from '#utils/commandFileLoader';
 
 export const command: Command = new Command(
     'source',
