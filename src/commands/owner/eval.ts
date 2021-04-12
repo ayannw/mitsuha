@@ -41,7 +41,7 @@ export const command: Command = new Command(
                     'ts\n' +
                     'Node.js version      : ' +
                     process.version +
-                    '\nDiscord.js version   : ' +
+                    '\nDiscord.js version   : v' +
                     version +
                     '`'.repeat(3) +
                     '\n\n' +
