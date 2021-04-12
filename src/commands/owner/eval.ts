@@ -1,0 +1,57 @@
+import { MitsuhaClient, Message } from '#lib/MitsuhaClient';
+import { MessageEmbed, version } from 'discord.js';
+import { Stopwatch } from '@sapphire/stopwatch';
+import { Command } from '#builders/Command';
+import { inspect } from 'util';
+
+export const command: Command = new Command(
+    'eval',
+    {
+        aliases: ['ev'],
+        category: 'owner',
+        ownerOnly: true,
+    },
+    (client: MitsuhaClient, message: Message) => {
+        const code = message.content.substr(message.content.indexOf(' ') + 1);
+        const sw = new Stopwatch();
+        const em: MessageEmbed = new MessageEmbed();
+        let output: any;
+
+        sw.start();
+        try {
+            output = inspect(eval(code));
+            em.setColor(client.config.colors.success);
+        } catch (err) {
+            output = err;
+            em.setColor(client.config.colors.error);
+        }
+        if (output.length > 2047)
+            return message.channel.send('Output too long.');
+
+        const time = sw.stop().toString();
+
+        em.setAuthor(
+            'Eval',
+            message.author.displayAvatarURL({
+                dynamic: true,
+            })
+        )
+            .setDescription(
+                '`'.repeat(3) +
+                    'ts\n' +
+                    'Node.js version      : ' +
+                    process.version +
+                    '\nDiscord.js version   : ' +
+                    version +
+                    '`'.repeat(3) +
+                    '\n\n' +
+                    '`'.repeat(3) +
+                    'ts\n' +
+                    String(output) +
+                    '`'.repeat(3)
+            )
+            .setFooter(`Done in ${time}`, client.user.displayAvatarURL());
+		
+        return message.channel.send(em);
+    }
+);

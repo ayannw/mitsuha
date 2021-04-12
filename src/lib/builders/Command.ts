@@ -43,7 +43,7 @@ export class Command implements Command {
         this.name = name;
         this.exec = exec;
         this.help = opts.help || '*Description unavailable.*';
-        this.usage = `${prefix}${opts.usage}` || `${prefix}${this.name}`;
+        this.usage = `${prefix}${opts.usage}` || `${prefix}${name}`;
         this.category = opts.category || 'Uncategorized';
 
         opts.nsfw ? (this.nsfw = opts.nsfw) : null;
