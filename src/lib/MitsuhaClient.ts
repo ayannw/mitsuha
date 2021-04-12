@@ -27,8 +27,8 @@ interface MitsuhaStats {
     };
 }
 interface CommandSearchRes {
-    res: Command | null;
-    closest: string | undefined;
+    res?: Command | null;
+    closest?: string | undefined;
 }
 
 export interface MitsuhaClient extends Client {
@@ -47,14 +47,20 @@ export const __MitsuhaClient__ = (client: Client): MitsuhaClient => {
     _.getCommand = async (keyword: string): Promise<CommandSearchRes> => {
         const _cmds = await _.commands;
         const cmds = _cmds.map((c) => c.name);
+        let re: CommandSearchRes;
 
-        return {
-            res:
+        try {
+            re.res =
                 _cmds.find(
                     (c) => c.name == keyword || c.aliases.includes(keyword)
-                ) || null,
-            closest: closest(keyword, cmds),
-        };
+                ) || null;
+        } catch {
+            re.res = null;
+        }
+
+        re.closest = closest(keyword, cmds);
+
+        return re;
     };
     _.config = conf;
     _.stats = async () => {

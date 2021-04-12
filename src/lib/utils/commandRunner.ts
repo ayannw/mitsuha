@@ -36,13 +36,18 @@ export const execCommand = async (client: MitsuhaClient, message: Message) => {
 
     const commands = await client.commands;
     const res = execMessage(client, message);
+    let command: Command | false;
 
     if (!res.swp) return;
 
-    const command: Command | false =
-        commands.find(
-            (c) => c.name === res.cmd || c.aliases.includes(res.cmd)
-        ) || false;
+    try {
+        command =
+            commands.find(
+                (c) => c.name === res.cmd || c.aliases.includes(res.cmd)
+            ) || false;
+    } catch (err) {
+        error(err);
+    }
 
     if (!command) return;
     try {
