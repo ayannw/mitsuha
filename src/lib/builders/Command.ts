@@ -20,13 +20,11 @@ interface CommandOptions {
 }
 
 export interface Command extends CommandOptions {
-    __type: string;
     name: string;
     exec: Exec;
 }
 
 export class Command implements Command {
-    public __type: string;
     public name: string;
     public exec: Exec;
     public aliases: string[];
@@ -39,13 +37,14 @@ export class Command implements Command {
     public ownerOnly: boolean;
 
     public constructor(name: string, opts: CommandOptions, exec: Exec) {
-        this.__type = 'MitsuhaCommand';
         this.name = name;
         this.exec = exec;
         this.help = opts.help || '*Description unavailable.*';
-        this.usage = `${prefix}${opts.usage}` || `${prefix}${name}`;
         this.category = opts.category || 'Uncategorized';
 
+        opts.usage
+            ? (this.usage = opts.usage)
+            : (this.usage = `${prefix}${name}`);
         opts.nsfw ? (this.nsfw = opts.nsfw) : null;
         opts.aliases ? (this.aliases = opts.aliases) : null;
         opts.permissions ? (this.permissions = opts.permissions) : null;
