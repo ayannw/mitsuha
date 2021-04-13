@@ -19,6 +19,8 @@ Multi-purpose Discord bot built with TypeScript and Discord.js.
 
 ## Setup
 
+> The website isn't ready (yet) please create a folder `website` in the project root to run the bot.
+
 ### Requirements:
 
 -   [`Node.js (v14+)`](https://nodejs.org/ 'Node.js') - to run the bot.
@@ -43,6 +45,6 @@ We recommend using [`Yarn`](http://yarnpkg.com/ 'Yarn') but you can still use np
 -   Now edit the file `.env` and put your bot's credentials. You can get the `DISCORD_TOKEN` from [`Discord developer portal`](https://discord.com/developers/ 'Discord developer portal').
 
 -   Now start the bot using `npm run start` or `yarn start`.
-    > Did not work ? Make sure you have used right credentials and try again. If it still doesn't work, please [open an issue](https://github.com/ayannw/mitsuha/issues/new 'create a new issue').
+    <-- Did not work ? Make sure you have used right credentials and try again. If it still doesn't work, please [open an issue](https://github.com/ayannw/mitsuha/issues/new 'create a new issue').-->
 
 <!--4th rewrite-->
