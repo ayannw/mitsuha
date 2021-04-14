@@ -2,6 +2,7 @@ import { MitsuhaClient, Message } from '#lib/MitsuhaClient';
 import { Command } from '#builders/Command';
 import { MessageEmbed } from 'discord.js';
 import { embedItem as item } from '#utils/MitsuhaEmbed';
+import { categories as cats } from '#handlers/command';
 
 export const command: Command = new Command(
     'help',
@@ -9,6 +10,7 @@ export const command: Command = new Command(
         category: 'bot',
         aliases: ['cmds', 'cmdlist', 'commands'],
         help: 'A list of my commands or the description of one.',
+        usage: '<command>',
     },
     async (client: MitsuhaClient, message: Message, args: string[]) => {
         const commands = await client.commands;
@@ -26,21 +28,30 @@ export const command: Command = new Command(
             .setTimestamp();
 
         if (args[0]) {
-            const cmd = await client.getCommand(args[0]);
+            const _cmd = await client.getCommand(args[0]);
 
-            if (!cmd.res && cmd.closest)
+            if (!_cmd.res && _cmd.closest)
                 return message.channel.send(
                     'Unknown command `' +
                         args[0] +
                         '`, did you mean `' +
-                        cmd.closest +
+                        _cmd.closest +
                         '` ?'
                 );
 
-            if (!cmd.res && !cmd.closest)
-                return message.channel.send(
-                    'Unknown command `' + args[0] + '`'
-                );
+            const cmd = _cmd.res;
+            let des: string = item('Name', cmd.name) + '> ' + cmd.help + '\n';
+
+            if (cmd.aliases)
+                des += item('Aliases', '`' + cmd.aliases.join(', ') + '`');
+
+            des += item(
+                'Usage',
+                '`'.repeat(3) + 'sh\n' + cmd.usage + '`'.repeat(3)
+            );
+
+            em.setDescription(des);
+            return message.channel.send(em);
         }
 
         commands.forEach((cmd) => {
