@@ -41,13 +41,14 @@ export class Command implements Command {
         this.exec = exec;
         this.help = opts.help || '*Description unavailable.*';
         this.category = opts.category || 'Uncategorized';
+        this.aliases = opts.aliases || [];
+        this.permissions = opts.permissions || [];
 
         opts.usage
             ? (this.usage = prefix + name + ' ' + opts.usage)
             : (this.usage = prefix + name);
+
         opts.nsfw ? (this.nsfw = opts.nsfw) : null;
-        opts.aliases ? (this.aliases = opts.aliases) : null;
-        opts.permissions ? (this.permissions = opts.permissions) : null;
         opts.permissionError
             ? (this.permissionError = opts.permissionError)
             : null;

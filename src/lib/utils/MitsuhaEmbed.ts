@@ -1,3 +1,3 @@
-export const embedItem = (a: string, b: string): string => {
-    return `❯ **${a}**: ${b}\n`;
+export const embedItem = (a: string, b: number | string): string => {
+    return `❯ **${a}**: ${String(b)}\n`;
 };

@@ -1,5 +1,4 @@
 import type { MitsuhaClient, Message } from '#lib/MitsuhaClient';
-import type { Command } from '#builders/Command';
 import { error, msgLog } from '#lib/logger';
 
 const execMessage = (client: MitsuhaClient, message: Message) => {
@@ -34,20 +33,12 @@ const execMessage = (client: MitsuhaClient, message: Message) => {
 export const execCommand = async (client: MitsuhaClient, message: Message) => {
     if (message.author.bot) return;
 
-    const commands = await client.commands;
     const res = execMessage(client, message);
-    let command: Command | false;
 
     if (!res.swp) return;
 
-    try {
-        command =
-            commands.find(
-                (c) => c.name === res.cmd || c.aliases.includes(res.cmd)
-            ) || false;
-    } catch (err) {
-        error(err);
-    }
+    const _c = await client.getCommand(res.cmd);
+    const command = _c.res;
 
     if (!command) return;
     try {

@@ -33,6 +33,7 @@ export interface CommandSearchRes {
 
 export interface MitsuhaClient extends Client {
     name: string;
+    version: string;
     commands: Promise<Collection<string, Command>>;
     getCommand: (keyword: string) => Promise<CommandSearchRes>;
     stats: () => Promise<MitsuhaStats>;
@@ -43,22 +44,17 @@ export const __MitsuhaClient__ = (client: Client): MitsuhaClient => {
     const _ = client as MitsuhaClient;
 
     _.name = 'Mitsuha';
+    _.version = process.env.npm_package_version;
     _.commands = commands;
     _.getCommand = async (keyword: string): Promise<CommandSearchRes> => {
         const _cmds = await _.commands;
         const cmds = _cmds.map((c) => c.name);
-        let re: CommandSearchRes;
-
-        try {
-            re.res =
-                _cmds.find(
-                    (c) => c.name == keyword || c.aliases.includes(keyword)
-                ) || null;
-        } catch {
-            re.res = null;
-        }
-
-        re.closest = closest(keyword, cmds);
+        const re: CommandSearchRes = {
+            res: _cmds.find(
+                (c) => c.name == keyword || c.aliases.includes(keyword) || null
+            ),
+            closest: closest(keyword, cmds),
+        };
 
         return re;
     };
