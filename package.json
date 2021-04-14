@@ -43,6 +43,7 @@
         "@sapphire/time-utilities": "^1.2.12",
         "@sapphire/type": "^1.1.7",
         "@sapphire/utilities": "^1.4.6",
+        "color-convert": "^2.0.1",
         "colorette": "^1.2.2",
         "cors": "^2.8.5",
         "discord.js": "^12.5.3",
@@ -50,6 +51,7 @@
         "express": "^4.17.1",
         "fastest-levenshtein": "^1.0.12",
         "glob": "^7.1.6",
-        "node-fetch": "^2.6.1"
+        "node-fetch": "^2.6.1",
+        "validate-color": "^2.1.1"
     }
 }
