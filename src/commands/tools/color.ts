@@ -10,6 +10,7 @@ export const command: Command = new Command(
         aliases: ['colour'],
         help: 'View a color.',
         usage: '[color name|hex|hsl|rgb]',
+        category: 'tools',
     },
     (client: MitsuhaClient, message: Message, args: string[]) => {
         if (!args[0])
