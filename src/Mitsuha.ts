@@ -23,7 +23,7 @@ const start = () => {
     });
 
     setTimeout((): void => {
-        server.start(6969);
+        server.start(Math.floor(Math.random() * 9999) + 1000);
         sw.start();
         try {
             client.login(token);

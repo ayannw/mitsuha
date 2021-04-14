@@ -6,7 +6,7 @@ export const command: Command = new Command(
     {
         aliases: ['pong', 'latency'],
         help: 'Check my latency and heartbeat.',
-        category: 'misc',
+        category: 'bot',
     },
     (client: MitsuhaClient, message: Message) => {
         return message.channel.send('?').then((m) => {

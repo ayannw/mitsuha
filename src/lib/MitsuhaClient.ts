@@ -26,7 +26,7 @@ interface MitsuhaStats {
         host: RawStr;
     };
 }
-interface CommandSearchRes {
+export interface CommandSearchRes {
     res?: Command | null;
     closest?: string | undefined;
 }

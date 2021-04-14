@@ -43,8 +43,8 @@ export class Command implements Command {
         this.category = opts.category || 'Uncategorized';
 
         opts.usage
-            ? (this.usage = opts.usage)
-            : (this.usage = `${prefix}${name}`);
+            ? (this.usage = prefix + name + ' ' + opts.usage)
+            : (this.usage = prefix + name);
         opts.nsfw ? (this.nsfw = opts.nsfw) : null;
         opts.aliases ? (this.aliases = opts.aliases) : null;
         opts.permissions ? (this.permissions = opts.permissions) : null;

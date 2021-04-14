@@ -6,7 +6,7 @@ import { embedItem as item } from '#utils/MitsuhaEmbed';
 export const command: Command = new Command(
     'help',
     {
-        category: 'misc',
+        category: 'bot',
         aliases: ['cmds', 'cmdlist', 'commands'],
         help: 'A list of my commands or the description of one.',
     },
