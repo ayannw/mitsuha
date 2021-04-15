@@ -6,4 +6,4 @@ export const colors = {
     error: '#FF004A',
     success: '#00FF7B',
 };
-export const repoURL = 'https://github.com/ayannw/mitsuha-snapshot';
+export const repoURL = 'https://github.com/ayannw/mitsuha';

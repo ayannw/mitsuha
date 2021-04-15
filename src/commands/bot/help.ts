@@ -62,11 +62,10 @@ export const command: Command = new Command(
                 up1(cat.name) +
                 '**__\n' +
                 '> ' +
-                cat.cmds.join(', ') +
-                '\n';
-        });
+                cat.cmds.join(', ')     + '\n'    });
 
-        em.setDescription(list);
+        em.setDescription(list + 'Type `' + client.config.prefix 
+        + 'help <command>` to get description of a specific command.');
         return message.channel.send(em);
     }
 );

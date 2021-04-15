@@ -22,7 +22,7 @@
         "start": "clear; nodemon --unhandled-rejections=strict --es-module-specifier-resolution=node .",
         "refresh": "rm -rf dist && yarn build"
     },
-    "repository": "https://github.com/ayannw/mitsuha-snapshot.git",
+    "repository": "https://github.com/ayannw/mitsuha.git",
     "author": "ayannw <ayanispro420@gmail.com>",
     "license": "MIT",
     "type": "module",
