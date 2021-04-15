@@ -17,8 +17,6 @@ Multi-purpose Discord bot built with TypeScript and Discord.js.
 
 ## Setup
 
-> The website isn't ready (yet) please create a folder `website` in the project root to run the bot.
-
 ### Requirements:
 
 -   [`Node.js (v14+)`](https://nodejs.org/ 'Node.js') - to run the bot.
@@ -40,7 +38,9 @@ npm install
 
 We recommend using [`Yarn`](http://yarnpkg.com/ 'Yarn') but you can still use npm.
 
--   Now edit the file `.env` and put your bot's credentials. You can get the `DISCORD_TOKEN` from [`Discord developer portal`](https://discord.com/developers/ 'Discord developer portal').
+-   Now move the file `.env.sample` to `.env` and edit the file.
+> - Get the `DISCORD_TOKEN` from [`Discord developer portal`](https://discord.com/developers/ 'Discord developer portal').
+> - Then get an `appid` from [`Open Weather Map`](https://openweathermap.org/appid 'Open Weather Map') and put it in `.env` as `OPEN_WEATHER_MAP_KEY`.
 
 -   Now start the bot using `npm run start` or `yarn start`.
     <!-- Did not work ? Make sure you have used right credentials and try again. If it still doesn't work, please [open an issue](https://github.com/ayannw/mitsuha/issues/new 'create a new issue').-->
