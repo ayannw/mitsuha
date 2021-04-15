@@ -50,7 +50,7 @@ export const command: Command = new Command(
 
             des += item(
                 'Usage',
-                codeBlock(cmd.usage)
+                codeBlock('bash', cmd.usage)
             );
 
             em.setDescription(des);

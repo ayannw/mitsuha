@@ -1,6 +1,7 @@
 import { MitsuhaClient, Message } from '#lib/MitsuhaClient';
 import { Command } from '#builders/Command';
 import { MessageEmbed } from 'discord.js';
+import { codeBlock } from '@sapphire/utilities';
 import files from '#utils/commandFileLoader';
 
 export const command: Command = new Command(
@@ -15,7 +16,8 @@ export const command: Command = new Command(
         const em: MessageEmbed = new MessageEmbed().setAuthor(
             'Source',
             client.user.displayAvatarURL()
-        );
+        )
+        .setColor(client.config.colors.normal)
         const commands = await client.commands;
         if (!args[0]) {
             em.setColor(client.config.colors.normal).setDescription(
@@ -35,13 +37,21 @@ export const command: Command = new Command(
                     'Unable to find command `' + args[0] + '`.'
                 );
 
-            const file = files.get(cmd.name);
-            em.setColor(client.config.colors.normal)
+            let file: string = files.get(cmd.name);
+
+			if(file.length > 2044) {
+				em.setDescription('> File is too long to send !\n' + 
+				`:file_folder: __[/src/commands/${cmd.category}/${cmd.name}.ts](${client.config.repoURL}/blob/main/src/commands/${cmd.category}/${cmd.name}.ts)__`);
+
+				return message.channel.send(em);
+			}
+            
+            em
                 .addField(
                     '\u200B',
                     `:file_folder:  __[/src/commands/${cmd.category}/${cmd.name}.ts](${client.config.repoURL}/blob/main/src/commands/${cmd.category}/${cmd.name}.ts)__`
                 )
-                .setDescription('`'.repeat(3) + 'ts\n' + file + '`'.repeat(3));
+                .setDescription(codeBlock('ts', file));
 
             return message.channel.send(em);
         }
