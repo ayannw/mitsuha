@@ -48,10 +48,7 @@ export const command: Command = new Command(
             if (cmd.aliases)
                 des += item('Aliases', '`' + cmd.aliases.join(', ') + '`');
 
-            des += item(
-                'Usage',
-                codeBlock('bash', cmd.usage)
-            );
+            des += item('Usage', codeBlock('bash', cmd.usage));
 
             em.setDescription(des);
             return message.channel.send(em);

@@ -13,11 +13,9 @@ export const command: Command = new Command(
         usage: 'source <null|command>',
     },
     async (client: MitsuhaClient, message: Message, args: string[]) => {
-        const em: MessageEmbed = new MessageEmbed().setAuthor(
-            'Source',
-            client.user.displayAvatarURL()
-        )
-        .setColor(client.config.colors.normal)
+        const em: MessageEmbed = new MessageEmbed()
+            .setAuthor('Source', client.user.displayAvatarURL())
+            .setColor(client.config.colors.normal);
         const commands = await client.commands;
         if (!args[0]) {
             em.setColor(client.config.colors.normal).setDescription(
@@ -37,21 +35,21 @@ export const command: Command = new Command(
                     'Unable to find command `' + args[0] + '`.'
                 );
 
-            let file: string = files.get(cmd.name);
+            const file: string = files.get(cmd.name);
 
-			if(file.length > 2044) {
-				em.setDescription('> File is too long to send !\n' + 
-				`:file_folder: __[/src/commands/${cmd.category}/${cmd.name}.ts](${client.config.repoURL}/blob/main/src/commands/${cmd.category}/${cmd.name}.ts)__`);
+            if (file.length > 2048) {
+                em.setDescription(
+                    '> File is too long to send !\n' +
+                        `:file_folder: __[/src/commands/${cmd.category}/${cmd.name}.ts](${client.config.repoURL}/blob/main/src/commands/${cmd.category}/${cmd.name}.ts)__`
+                );
 
-				return message.channel.send(em);
-			}
-            
-            em
-                .addField(
-                    '\u200B',
-                    `:file_folder:  __[/src/commands/${cmd.category}/${cmd.name}.ts](${client.config.repoURL}/blob/main/src/commands/${cmd.category}/${cmd.name}.ts)__`
-                )
-                .setDescription(codeBlock('ts', file));
+                return message.channel.send(em);
+            }
+
+            em.addField(
+                '\u200B',
+                `:file_folder:  __[/src/commands/${cmd.category}/${cmd.name}.ts](${client.config.repoURL}/blob/main/src/commands/${cmd.category}/${cmd.name}.ts)__`
+            ).setDescription(codeBlock('ts', file));
 
             return message.channel.send(em);
         }
