@@ -23,7 +23,7 @@ Multi-purpose Discord bot built with TypeScript and Discord.js.
 > Setup for hosting: [wiki/setup](https://github.com/ayannw/mitsuha/wiki/Setup "setup")
 
 #### Extending the bot
- - Adding commands: [wiki/adding commands](https://github.com/ayannw/mitsuha/wiki/Adding-commands "adding commands")
+ - Adding commands: [wiki/adding-commands](https://github.com/ayannw/mitsuha/wiki/Adding-commands "adding commands")
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 <!--4th rewrite-->
