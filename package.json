@@ -1,6 +1,6 @@
 {
     "name": "mitsuha-snapshot",
-    "version": "2.1.4-dev.2",
+    "version": "2.1.5-dev",
     "main": "dist/Mitsuha.js",
     "os": [
         "!win32",
@@ -55,6 +55,7 @@
         "express": "^4.17.1",
         "fastest-levenshtein": "^1.0.12",
         "glob": "^7.1.6",
+        "i18n-iso-countries": "^6.7.0",
         "node-fetch": "^2.6.1",
         "validate-color": "^2.1.1"
     }
