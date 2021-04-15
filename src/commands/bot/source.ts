@@ -8,7 +8,7 @@ export const command: Command = new Command(
     {
         aliases: ['sauce', 'src'],
         help: "View source code of me or one of my command's.",
-        category: 'misc',
+        category: 'bot',
         usage: 'source <null|command>',
     },
     async (client: MitsuhaClient, message: Message, args: string[]) => {

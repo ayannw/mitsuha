@@ -3,6 +3,11 @@ import { Command } from '#builders/Command';
 import { MessageEmbed } from 'discord.js';
 import { embedItem as item } from '#utils/MitsuhaEmbed';
 import { categories as cats } from '#handlers/command';
+import { codeBlock } from '@sapphire/utilities';
+
+const up1 = (s: string) => {
+    return s.replace(s[0], s[0].toUpperCase());
+};
 
 export const command: Command = new Command(
     'help',
@@ -13,8 +18,6 @@ export const command: Command = new Command(
         usage: '<command>',
     },
     async (client: MitsuhaClient, message: Message, args: string[]) => {
-        const commands = await client.commands;
-
         let list = '';
         const em: MessageEmbed = new MessageEmbed()
             .setAuthor('Displaying help', client.user.displayAvatarURL())
@@ -47,20 +50,26 @@ export const command: Command = new Command(
 
             des += item(
                 'Usage',
-                '`'.repeat(3) + 'sh\n' + cmd.usage + '`'.repeat(3)
+                codeBlock(cmd.usage)
             );
 
             em.setDescription(des);
             return message.channel.send(em);
         }
 
-        commands.forEach((cmd) => {
-            list += item(cmd.name, cmd.help);
+        const categories = await cats;
+
+        categories.forEach((cat) => {
+            list +=
+                ':hash: __**' +
+                up1(cat.name) +
+                '**__\n' +
+                '> ' +
+                cat.cmds.join(', ') +
+                '\n';
         });
 
         em.setDescription(list);
-        list = '';
-
         return message.channel.send(em);
     }
 );

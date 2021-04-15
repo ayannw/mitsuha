@@ -6,7 +6,7 @@ import { readdir } from 'fs';
 
 const path: string = process.cwd() + '/dist/commands/';
 
-export const _getCommands = async (): Promise<Collection<string, Command>> => {
+const getCommands = async (): Promise<Collection<string, Command>> => {
     const cmds: Collection<string, Command> = new Collection();
 
     const commands = await new Promise((resolve, reject) =>
@@ -34,15 +34,25 @@ export const _getCommands = async (): Promise<Collection<string, Command>> => {
     return cmds;
 };
 
-const cats: string[] = [];
+const categories_ = async () => {
+    const cmds = await getCommands();
+    const infolist: any[] = [];
+    const map: Map<string, { name: string; cmds: string[] }> = new Map();
 
-(() => {
-    readdir(path, (e, ls) => {
-        if (e) throw e;
+    cmds.forEach((cmd) =>
+        infolist.push({
+            name: cmd.name,
+            cat: cmd.category,
+        })
+    );
 
-        ls.forEach((i) => cats.push(i));
+    infolist.forEach((item) => map.set(item.cat, { name: item.cat, cmds: [] }));
+    infolist.forEach((item) => {
+        map.get(item.cat).cmds.push('`' + item.name + '`');
     });
-})();
 
-export const categories = cats;
-export const commands = _getCommands();
+    return map;
+};
+
+export const categories = categories_();
+export const commands = getCommands();

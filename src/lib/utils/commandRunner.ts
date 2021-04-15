@@ -57,6 +57,14 @@ export const execCommand = async (client: MitsuhaClient, message: Message) => {
 
         return command.exec(client, message, res.args);
     } catch (e) {
-        return error('unable to execute command ' + command + ' : ' + e);
+        message.channel.send(
+            'Failed to execute command ' +
+                `\`${command.name}\`, reason:\n` +
+                '`'.repeat(3) +
+                'ts\n' +
+                e +
+                '`'.repeat(3)
+        );
+        return error('failed to execute command ' + command.name + ' : ' + e);
     }
 };
