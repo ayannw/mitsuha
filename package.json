@@ -1,6 +1,6 @@
 {
     "name": "mitsuha-snapshot",
-    "version": "2.1.5-dev",
+    "version": "1.2.0",
     "main": "dist/Mitsuha.js",
     "os": [
         "!win32",
