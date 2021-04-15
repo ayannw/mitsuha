@@ -36,7 +36,7 @@ cd mitsuha
 npm install
 ```
 
-We recommend using [`Yarn`](http://yarnpkg.com/ 'Yarn') but you can still use npm.
+> I'd recommended using [`Yarn`](http://yarnpkg.com/ 'Yarn') but you can still use npm.
 
 -   Now move the file `.env.sample` to `.env` and edit the file.
 > - Get the `DISCORD_TOKEN` from [`Discord developer portal`](https://discord.com/developers/ 'Discord developer portal').
