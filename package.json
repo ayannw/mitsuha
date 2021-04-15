@@ -1,7 +1,11 @@
 {
     "name": "mitsuha-snapshot",
-    "version": "2.1.4-dev",
+    "version": "2.1.4-dev.1",
     "main": "dist/Mitsuha.js",
+    "os": [
+        "!win32",
+        "!darwin"
+    ],
     "imports": {
         "#lib/*": "./dist/lib/*",
         "#root/*": "./dist/*",
