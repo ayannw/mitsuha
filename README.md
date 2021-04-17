@@ -12,7 +12,7 @@ Multi-purpose Discord bot built with TypeScript and Discord.js.
 
  - Fast
  - Open-source
- - Extensible
+ - Extendable
 
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/ayannw/mitsuha.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ayannw/mitsuha/alerts/)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/ayannw/mitsuha.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ayannw/mitsuha/context:javascript)
