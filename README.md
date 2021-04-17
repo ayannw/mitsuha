@@ -1,6 +1,6 @@
 <img
     height="180px"
-    src="media/image.png"
+    src="media/image.jpeg"
     align="right"
 />
 

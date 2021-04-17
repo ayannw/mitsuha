@@ -5,3 +5,4 @@ dist/
 test/
 website/
 test*
+src/config.ts

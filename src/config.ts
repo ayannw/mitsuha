@@ -1,4 +1,4 @@
-export const prefix = 'md.';
+export const prefix = 'm.';
 export const owners = ['601613637551128623']; //put your id here, you can use multiple IDs like ['id1', 'id2']
 export const colors = {
     normal: '#3B88C3',
