@@ -1,6 +1,6 @@
 <img
     height="180px"
-    src="media/image.jpeg"
+    src="https://cdn.discordapp.com/attachments/808332216983355422/833106943496159243/image.jpeg"
     align="right"
 />
 
