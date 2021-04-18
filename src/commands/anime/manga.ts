@@ -12,10 +12,9 @@ const kitsuLogo = 'https://avatars1.githubusercontent.com/u/7648832?s=200&v=4';
 export const command: Command = new Command(
     'manga',
     {
-        aliases: ['manga'],
         help: 'Search kitsu.io for a manga.',
         usage: '[mangaName]',
-        category: 'manga',
+        category: 'anime',
     },
     async (client: MitsuhaClient, message: Message, args: string[]) => {
         if (!args[0])

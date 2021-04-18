@@ -45,7 +45,7 @@ export const command: Command = new Command(
             const cmd = _cmd.res;
             let des: string = item('Name', cmd.name) + '> ' + cmd.help + '\n';
 
-            if (cmd.aliases)
+            if (cmd.aliases[0])
                 des += item('Aliases', '`' + cmd.aliases.join(', ') + '`');
 
             des += item('Usage', codeBlock('bash', cmd.usage));
