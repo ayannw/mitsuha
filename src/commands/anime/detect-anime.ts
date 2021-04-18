@@ -8,14 +8,14 @@ const url = 'https://trace.moe/api/search?url=';
 export const command: Command = new Command(
     'detect-anime',
     {
-        aliases: ['detectAnime'],
         usage: '[attachment:animeScreenshot]',
+        help: 'Detect the anime by attachment.',
         category: 'anime',
     },
     async (client: MitsuhaClient, message: Message) => {
         if (!message.attachments.first())
             return message.channel.send(
-                'Missing attachment `[attachment:animeScreenshot]`'
+                'Missing attachment: `[attachment:animeScreenshot]`.'
             );
 
         const img = message.attachments.first().url;
