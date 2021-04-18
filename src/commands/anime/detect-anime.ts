@@ -31,7 +31,14 @@ export const command: Command = new Command(
         }
 
         res = await res.json();
-        const anime = res.docs[0];
+
+        let anime;
+
+        try {
+            anime = res.docs[0];
+        } catch {
+            return message.channel.send(String(res) + '.');
+        }
 
         return message.channel.send(
             'Anime: `' +
