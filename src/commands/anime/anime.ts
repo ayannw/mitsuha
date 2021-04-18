@@ -21,7 +21,7 @@ export const command: Command = new Command(
     },
     async (client: MitsuhaClient, message: Message, args: string[]) => {
         if (!args[0])
-            return message.channel.send('Missing argument: `[animeName]`');
+            return message.channel.send('Missing argument: `[animeName]`.');
 
         const sw = new Stopwatch();
 
