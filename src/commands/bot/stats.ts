@@ -1,7 +1,11 @@
 import { MitsuhaClient, Message } from '#lib/MitsuhaClient';
-import { embedItem as item } from '#utils/MitsuhaEmbed';
 import { MessageEmbed, version as dV } from 'discord.js';
 import { Command } from '#builders/Command';
+
+const item = (a: string, b: string | number) => {
+    b = String(b);
+    return `> ❯ **${a}**: ${b}\n`;
+};
 
 export const command: Command = new Command(
     'stats',
@@ -20,7 +24,7 @@ export const command: Command = new Command(
                 client.user.displayAvatarURL()
             )
             .setDescription(
-                '• **Statistics**:\n' +
+                ' • **Statistics**\n' +
                     item('Users', stats.users) +
                     item('Channels', client.channels.cache.size) +
                     item('Guilds', stats.guilds.length) +
@@ -34,10 +38,10 @@ export const command: Command = new Command(
                             )[1]
                     ) +
                     item('Available commands', stats.commands) +
-                    '\n• **Heap**:\n' +
+                    ' • **Heap**\n' +
                     item('Used', stats.heapUsage.used.str) +
                     item('Total', stats.heapUsage.total.str) +
-                    '\n• **Uptime**:\n' +
+                    ' • **Uptime**\n' +
                     item('Client', stats.uptimes.client.str) +
                     item('Host', stats.uptimes.host.str)
             )
