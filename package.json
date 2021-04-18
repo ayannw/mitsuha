@@ -1,6 +1,6 @@
 {
     "name": "mitsuha-snapshot",
-    "version": "1.2.0",
+    "version": "2.2.1",
     "main": "dist/Mitsuha.js",
     "os": [
         "!win32",
@@ -38,9 +38,9 @@
         "@typescript-eslint/eslint-plugin": "^4.20.0",
         "@typescript-eslint/parser": "^4.21.0",
         "eslint": "^7.23.0",
+        "nodemon": "^2.0.7",
         "prettier": "^2.2.1",
-        "typescript": "^4.2.3",
-        "nodemon": "^2.0.7"
+        "typescript": "^4.2.3"
     },
     "dependencies": {
         "@sapphire/discord.js-utilities": "^1.5.4",
