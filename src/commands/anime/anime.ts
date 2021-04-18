@@ -46,11 +46,6 @@ export const command: Command = new Command(
         const time = sw.stop().toString();
         const anime = list.data[0].attributes;
 
-        /*if (anime.nsfw && !message.channel.nsfw)
-        	return message.channel.send(
-        		'Looks like you need to run this again in a NSFW channel.'
-        	);*/
-
         const em: MessageEmbed = new MessageEmbed()
             .setTitle(
                 anime.canonicalTitle ||
@@ -86,4 +81,3 @@ export const command: Command = new Command(
         return message.channel.send(em);
     }
 );
-
