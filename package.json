@@ -1,6 +1,6 @@
 {
     "name": "mitsuha-snapshot",
-    "version": "2.2.3-2",
+    "version": "2.2.3-3",
     "main": "dist/Mitsuha.js",
     "os": [
         "!win32",
@@ -39,6 +39,7 @@
         "@typescript-eslint/parser": "^4.21.0",
         "eslint": "^7.23.0",
         "nodemon": "^2.0.7",
+        "pm2": "^4.5.6",
         "prettier": "^2.2.1",
         "typescript": "^4.2.3"
     },
