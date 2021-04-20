@@ -2,7 +2,7 @@
 import * as logger from '#lib/logger';
 import { __MitsuhaClient__, MitsuhaClient } from '#lib/MitsuhaClient';
 import { execCommand } from '#lib/utils/commandRunner';
-import { Client } from 'discord.js';
+import { Client, Intents } from 'discord.js';
 import { config } from 'dotenv';
 import { readFile } from 'fs';
 import { Stopwatch } from '@sapphire/stopwatch';
@@ -11,7 +11,7 @@ import express from 'express';
 
 config();
 
-const _client: Client = new Client();
+const _client: Client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 const client: MitsuhaClient = __MitsuhaClient__(_client);
 const token = process.env.DISCORD_TOKEN;
 const sw = new Stopwatch();

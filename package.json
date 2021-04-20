@@ -52,7 +52,7 @@
         "color-convert": "^2.0.1",
         "colorette": "^1.2.2",
         "cors": "^2.8.5",
-        "discord.js": "^12.5.3",
+        "discord.js": "discordjs/discord.js",
         "dotenv": "^8.2.0",
         "express": "^4.17.1",
         "fastest-levenshtein": "^1.0.12",

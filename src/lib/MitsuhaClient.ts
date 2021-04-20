@@ -25,6 +25,7 @@ interface MitsuhaStats {
         client: RawStr;
         host: RawStr;
     };
+    ping: number;
 }
 export interface CommandSearchRes {
     res?: Command | null;
@@ -94,6 +95,7 @@ export const __MitsuhaClient__ = (client: Client): MitsuhaClient => {
                     str: T.format(uptime() * 1000),
                 },
             },
+            ping: _.ws.ping,
         };
         return stats;
     };
