@@ -47,7 +47,7 @@ export const command: Command = new Command(
             }
 
             em.addField(
-                '\u200B',
+                client.constants.ZERO_WIDTH_SPACE,
                 `:file_folder:  __[/src/commands/${cmd.category}/${cmd.name}.ts](${client.config.repoURL}/blob/main/src/commands/${cmd.category}/${cmd.name}.ts)__`
             ).setDescription(codeBlock('ts', file));
 
