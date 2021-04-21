@@ -18,7 +18,7 @@ export const command: Command = new Command(
         usage: '<command>',
     },
     async (client: MitsuhaClient, message: Message, args: string[]) => {
-        let list = '';
+        let list = `> Prefix for this guild is set to \`${client.config.prefix}\`, type \`${client.config.prefix}help <command>\` to get explanation of a specific command.\n`;
         const em: MessageEmbed = new MessageEmbed()
             .setAuthor('Displaying help', client.user.displayAvatarURL())
             .setColor(client.config.colors.normal)
@@ -43,7 +43,12 @@ export const command: Command = new Command(
                 );
 
             const cmd = _cmd.res;
-            let des: string = item('Name', cmd.name) + '> ' + cmd.help + '\n';
+            let des: string =
+                item('Name', cmd.name) +
+                item('Category', cmd.category) +
+                '> ' +
+                cmd.help +
+                '\n';
 
             if (cmd.aliases[0])
                 des += item('Aliases', '`' + cmd.aliases.join(', ') + '`');
@@ -58,20 +63,15 @@ export const command: Command = new Command(
 
         categories.forEach((cat) => {
             list +=
-                ':hash: __**' +
+                '❯❯ **' +
                 up1(cat.name) +
-                '**__\n' +
+                '**\n' +
                 '> ' +
-                cat.cmds.join(', ') +
+                cat.cmds.join(' | ') +
                 '\n';
         });
 
-        em.setDescription(
-            list +
-                'Type `' +
-                client.config.prefix +
-                'help <command>` to get description of a specific command.'
-        );
+        em.setDescription(list);
         return message.channel.send(em);
     }
 );

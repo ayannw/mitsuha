@@ -7,7 +7,7 @@ export const command: Command = new Command(
     'avatar',
     {
         category: 'tools',
-        help: 'View someone\'s avatar in full size.',
+        help: "View someone's avatar in full size.",
         aliases: ['a', 'av', 'pfp'],
         usage: '[@mention|tag|username]',
     },
