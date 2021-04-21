@@ -18,7 +18,7 @@ export const command: Command = new Command(
         usage: '<command>',
     },
     async (client: MitsuhaClient, message: Message, args: string[]) => {
-        let list = `> Prefix for this guild is set to \`${client.config.prefix}\`, type \`${client.config.prefix}help <command>\` to get explanation of a specific command.\n`;
+        `> Prefix for this guild is set to \`${client.config.prefix}\`, type \`${client.config.prefix}help <command>\` to get explanation of a specific command.\n`;
         const em: MessageEmbed = new MessageEmbed()
             .setAuthor('Displaying help', client.user.displayAvatarURL())
             .setColor(client.config.colors.normal)
@@ -62,16 +62,15 @@ export const command: Command = new Command(
         const categories = await cats;
 
         categories.forEach((cat) => {
-            list +=
-                '❯❯ **' +
-                up1(cat.name) +
-                '**\n' +
-                '> ' +
-                cat.cmds.join(' | ') +
-                '\n';
+            em.addField(
+                '❯❯ **' + up1(cat.name) + '**\n',
+                '> ' + cat.cmds.join(' | ') + '\n'
+            );
         });
 
-        em.setDescription(list);
+        em.setDescription(
+            `> Prefix for this guild is set to \`${client.config.prefix}\`, type \`${client.config.prefix}help <command>\` to get explanation of a specific command.\n`
+        );
         return message.channel.send(em);
     }
 );
