@@ -1,3 +1,7 @@
 dist/
 test/
-website/
+data/
+.prettierrc.json
+.eslintrc.json
+.github/
+_config.yml

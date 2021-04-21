@@ -39,7 +39,7 @@ export class Command implements Command {
     public constructor(name: string, opts: CommandOptions, exec: Exec) {
         this.name = name;
         this.exec = exec;
-        this.help = opts.help || '*Description unavailable.*';
+        this.help = opts.help || 'Description unavailable.';
         this.category = opts.category || 'Uncategorized';
         this.aliases = opts.aliases || [];
         this.permissions = opts.permissions || [];

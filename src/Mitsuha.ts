@@ -1,4 +1,3 @@
-//import * as server from './server';
 import * as logger from '#lib/logger';
 import { __MitsuhaClient__, MitsuhaClient } from '#lib/MitsuhaClient';
 import { execCommand } from '#lib/utils/commandRunner';
@@ -11,7 +10,9 @@ import express from 'express';
 
 config();
 
-const _client: Client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+const _client: Client = new Client({
+    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
+});
 const client: MitsuhaClient = __MitsuhaClient__(_client);
 const token = process.env.DISCORD_TOKEN;
 const sw = new Stopwatch();

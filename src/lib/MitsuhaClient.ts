@@ -6,6 +6,7 @@ import type { Client, Collection } from 'discord.js';
 import type { Message as M } from 'discord.js';
 import type { Command } from './builders/Command';
 import * as conf from '../config';
+import * as consts from '../constants';
 
 const T = new DurationFormatter();
 
@@ -39,6 +40,7 @@ export interface MitsuhaClient extends Client {
     getCommand: (keyword: string) => Promise<CommandSearchRes>;
     stats: () => Promise<MitsuhaStats>;
     config: any;
+    constants: any;
 }
 
 export const __MitsuhaClient__ = (client: Client): MitsuhaClient => {
@@ -59,7 +61,6 @@ export const __MitsuhaClient__ = (client: Client): MitsuhaClient => {
 
         return re;
     };
-    _.config = conf;
     _.stats = async () => {
         const cmds = await _.commands;
         const stats: MitsuhaStats = {
@@ -99,6 +100,8 @@ export const __MitsuhaClient__ = (client: Client): MitsuhaClient => {
         };
         return stats;
     };
+    _.config = conf;
+    _.constants = consts;
 
     return _;
 };
