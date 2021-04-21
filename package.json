@@ -1,5 +1,5 @@
 {
-    "name": "mitsuha-snapshot",
+    "name": "mitsuha",
     "version": "2.2.3-4",
     "main": "dist/Mitsuha.js",
     "os": [
