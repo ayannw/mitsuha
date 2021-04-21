@@ -18,8 +18,7 @@ export const command: Command = new Command(
         usage: '<command>',
     },
     async (client: MitsuhaClient, message: Message, args: string[]) => {
-        `> Prefix for this guild is set to \`${client.config.prefix}\`, type \`${client.config.prefix}help <command>\` to get explanation of a specific command.\n`;
-        const em: MessageEmbed = new MessageEmbed()
+             const em: MessageEmbed = new MessageEmbed()
             .setAuthor('Displaying help', client.user.displayAvatarURL())
             .setColor(client.config.colors.normal)
             .setFooter(
