@@ -5,6 +5,7 @@ import { Client, Intents } from 'discord.js';
 import { config } from 'dotenv';
 import { readFile } from 'fs';
 import { Stopwatch } from '@sapphire/stopwatch';
+import { enableSlash } from '#utils/slashCommand';
 import cors from 'cors';
 import express from 'express';
 
@@ -62,6 +63,8 @@ const start = () => {
 };
 
 client.once('ready', () => {
+    enableSlash(client);
+
     logger.success('logged in as ' + client.user.tag);
     const t = sw.stop().toString();
     logger.info('took ' + t + ' to login');

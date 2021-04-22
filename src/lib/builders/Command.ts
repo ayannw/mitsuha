@@ -2,7 +2,7 @@ import type { MitsuhaClient, Message } from '../MitsuhaClient';
 import { prefix } from '#root/config';
 
 interface Exec {
-    (client: MitsuhaClient, message: Message, args?: string[]):
+    (client: MitsuhaClient, message?: Message, args?: string[]):
         | Promise<void | Message>
         | Message
         | void

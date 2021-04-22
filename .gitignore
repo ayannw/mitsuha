@@ -6,3 +6,4 @@ test/
 website/
 test*
 src/config.ts
+MitsuhaGuild.ts
