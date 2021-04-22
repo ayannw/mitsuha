@@ -54,7 +54,7 @@ export const command: Command = new Command(
                     anime.titles.ja_jp
             )
             .setURL('https://kitsu.io/anime/' + anime.slug)
-            .setColor(client.config.colors.normal)
+            .setColor(client.constants.COLORS.normal)
             .setDescription(
                 embedItem('English title', anime.titles.en || 'None') +
                     embedItem(

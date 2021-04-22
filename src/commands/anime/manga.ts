@@ -51,7 +51,7 @@ export const command: Command = new Command(
                     manga.titles.ja_jp
             )
             .setURL('https://kitsu.io/manga/' + manga.slug)
-            .setColor(client.config.colors.normal)
+            .setColor(client.constants.COLORS.normal)
             .setDescription(
                 embedItem('English title', manga.titles.en || 'None') +
                     embedItem(

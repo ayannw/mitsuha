@@ -45,7 +45,7 @@ export const command: Command = new Command(
                     embedItem('Longitude', pos.longitude)
             )
             .setThumbnail(img)
-            .setColor(client.config.colors.normal);
+            .setColor(client.constants.COLORS.normal);
 
         return message.channel.send(em);
     }

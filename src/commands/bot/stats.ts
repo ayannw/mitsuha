@@ -18,7 +18,7 @@ export const command: Command = new Command(
         const stats = await client.stats();
 
         const em: MessageEmbed = new MessageEmbed()
-            .setColor(client.config.colors.normal)
+            .setColor(client.constants.COLORS.normal)
             .setAuthor(
                 'Mitsuha v' + client.version,
                 client.user.displayAvatarURL()

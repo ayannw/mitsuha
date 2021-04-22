@@ -25,7 +25,7 @@ export const command: Command = new Command(
         const em: MessageEmbed = new MessageEmbed()
             .setAuthor(user.tag, url)
             .setImage(url)
-            .setColor(client.config.colors.normal)
+            .setColor(client.constants.COLORS.normal)
             .setTimestamp();
 
         return message.channel.send(em);

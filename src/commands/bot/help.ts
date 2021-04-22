@@ -20,7 +20,7 @@ export const command: Command = new Command(
     async (client: MitsuhaClient, message: Message, args: string[]) => {
         const em: MessageEmbed = new MessageEmbed()
             .setAuthor('Displaying help', client.user.displayAvatarURL())
-            .setColor(client.config.colors.normal)
+            .setColor(client.constants.COLORS.normal)
             .setFooter(
                 message.author.tag,
                 message.author.displayAvatarURL({

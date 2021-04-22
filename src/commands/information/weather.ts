@@ -38,7 +38,7 @@ export const command: Command = new Command(
         };
         const icon = 'http://openweathermap.org/img/w/' + weather.icon + '.png';
         const em: MessageEmbed = new MessageEmbed()
-            .setColor(client.config.colors.normal)
+            .setColor(client.constants.COLORS.normal)
             .setDescription(
                 '**' +
                     info.name +

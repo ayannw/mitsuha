@@ -18,7 +18,7 @@ export const command: Command = new Command(
             .setColor(client.config.colors.normal);
         const commands = await client.commands;
         if (!args[0]) {
-            em.setColor(client.config.colors.normal).setDescription(
+            em.setColor(client.constants.COLORS.normal).setDescription(
                 '> You can view my source code here: \n' + client.config.repoURL
             );
 
