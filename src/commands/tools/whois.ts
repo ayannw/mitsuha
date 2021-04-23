@@ -30,14 +30,14 @@ export const command: Command = new Command(
             .setColor(client.constants.COLORS.normal)
             .setAuthor(user.tag, av)
             .setDescription(
-            	' ' +
-            	client.constants.DOT +
-            	' **User information**\n' +
-            	item('Username', user.username) +
-            	item('Discriminator', user.discriminator) +
-            	item('ID', user.id) +
-            	item('Created at', creationDate) + 
-            	'\n'
+                ' ' +
+                    client.constants.DOT +
+                    ' **User information**\n' +
+                    item('Username', user.username) +
+                    item('Discriminator', user.discriminator) +
+                    item('ID', user.id) +
+                    item('Created at', creationDate) +
+                    '\n'
             )
             .setThumbnail(av)
             .setTimestamp();
