@@ -1,11 +1,7 @@
 import { MitsuhaClient, Message } from '#lib/MitsuhaClient';
 import { MessageEmbed, version as dV } from 'discord.js';
+import { quotedEmbedItem as item } from '#utils/MitsuhaEmbed';
 import { Command } from '#builders/Command';
-
-const item = (a: string, b: string | number) => {
-    b = String(b);
-    return `> ❯ **${a}**: ${b}\n`;
-};
 
 export const command: Command = new Command(
     'stats',

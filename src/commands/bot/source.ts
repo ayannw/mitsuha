@@ -15,7 +15,7 @@ export const command: Command = new Command(
     async (client: MitsuhaClient, message: Message, args: string[]) => {
         const em: MessageEmbed = new MessageEmbed()
             .setAuthor('Source', client.user.displayAvatarURL())
-            .setColor(client.config.colors.normal);
+            .setColor(client.constants.COLORS.normal);
         const commands = await client.commands;
         if (!args[0]) {
             em.setColor(client.constants.COLORS.normal).setDescription(

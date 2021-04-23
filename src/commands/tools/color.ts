@@ -27,17 +27,15 @@ export const command: Command = new Command(
         if (color.cType == 'hex') hex = c.replace('#', '');
         else hex = color.converted.hex.replace('#', '');
 
-        const img = 'https://singlecolorimage.com/get/' + hex + '/300x170';
         const em: MessageEmbed = new MessageEmbed()
             .setColor('#' + hex)
-            .setAuthor(c, img)
             .setDescription(
                 item('Hex', `#${hex}`) +
                     item('RGB', color.converted.rgb.join(', ')) +
                     item('HSL', color.converted.hsl.join(', ')) +
                     item('Name', color.converted.name)
             )
-            .setImage(img);
+            .setImage('https://singlecolorimage.com/get/' + hex + '/300x170');
 
         return message.channel.send(em);
     }

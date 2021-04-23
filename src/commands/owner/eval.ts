@@ -25,10 +25,10 @@ export const command: Command = new Command(
         sw.start();
         try {
             output = inspect(eval(code));
-            em.setColor(client.config.colors.success);
+            em.setColor(client.constants.COLORS.success);
         } catch (err) {
             output = err;
-            em.setColor(client.config.colors.error);
+            em.setColor(client.constants.COLORS.error);
         }
         if (output.length > 2047)
             return message.channel.send('Output too long.');
