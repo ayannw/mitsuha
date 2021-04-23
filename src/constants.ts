@@ -7,3 +7,5 @@ export const COLORS = {
 };
 export const INVITE_URL =
     'https://discord.com/oauth2/authorize?client_id=749640517549293729&scope=bot&permissions=2147806272';
+
+export const DOT = '•';

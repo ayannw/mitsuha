@@ -33,6 +33,12 @@ const execMessage = (client: MitsuhaClient, message: Message) => {
 export const execCommand = async (client: MitsuhaClient, message: Message) => {
     if (message.author.bot) return;
 
+    if (message.content.startsWith(`<@${client.user.id}>`)) {
+        return message.channel.send(
+            `Prefix for this guild is set to \`${client.config.prefix}\`.`
+        );
+    }
+
     const res = execMessage(client, message);
 
     if (!res.swp) return;
