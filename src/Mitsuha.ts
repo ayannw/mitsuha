@@ -6,8 +6,6 @@ import { config } from 'dotenv';
 import { readFile } from 'fs';
 import { Stopwatch } from '@sapphire/stopwatch';
 import { enableSlash } from '#utils/slashCommand';
-import cors from 'cors';
-import express from 'express';
 
 config();
 
@@ -17,31 +15,6 @@ const _client: Client = new Client({
 const client: MitsuhaClient = __MitsuhaClient__(_client);
 const token = process.env.DISCORD_TOKEN;
 const sw = new Stopwatch();
-const app = express();
-
-app.use(cors());
-
-app.get('/api/commands', async (req, res) => {
-    const cmds = await client.commands;
-    const _list: any[] = [];
-
-    cmds.forEach((cmd) => {
-        _list.push({
-            name: cmd.name,
-            help: cmd.help,
-        });
-    });
-
-    const list = _list;
-
-    return res.json(list);
-});
-
-app.get('/api/stats', async (req, res) => {
-    const _stats = await client.stats();
-
-    return res.json(_stats);
-});
 
 const start = () => {
     console.clear();
@@ -68,14 +41,6 @@ client.once('ready', () => {
     logger.success('logged in as ' + client.user.tag);
     const t = sw.stop().toString();
     logger.info('took ' + t + ' to login');
-
-    app.listen(process.env.API_PORT, () => {
-        logger.success(
-            'server started: http://0.0.0.0:' +
-                String(process.env.API_PORT) +
-                '/'
-        );
-    });
 });
 
 client.on('message', async (message) => {

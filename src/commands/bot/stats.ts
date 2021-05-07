@@ -26,13 +26,6 @@ export const command: Command = new Command(
                     item('Guilds', stats.guilds.length) +
                     item('Node.js version', process.version) +
                     item('Discord.js version', 'v' + dV) +
-                    item(
-                        'TypeScript version',
-                        'v' +
-                            process.env.npm_package_devDependencies_typescript.split(
-                                '^'
-                            )[1]
-                    ) +
                     item('Available commands', stats.commands) +
                     ' • **Heap**\n' +
                     item('Used', stats.heapUsage.used.str) +
