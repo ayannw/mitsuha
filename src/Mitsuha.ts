@@ -37,10 +37,10 @@ const start = () => {
 
 client.once('ready', () => {
     enableSlash(client);
-
     logger.success('logged in as ' + client.user.tag);
     const t = sw.stop().toString();
     logger.info('took ' + t + ' to login');
+    //client.guilds.cache.forEach(async (guild) => await guild.members.fetch());
 });
 
 client.on('message', async (message) => {
