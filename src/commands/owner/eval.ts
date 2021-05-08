@@ -1,5 +1,5 @@
 import { MitsuhaClient, Message } from '#lib/MitsuhaClient';
-import { MessageEmbed, version } from 'discord.js';
+import { version } from 'discord.js';
 import { Stopwatch } from '@sapphire/stopwatch';
 import { Command } from '#builders/Command';
 import { inspect } from 'util';
@@ -7,7 +7,7 @@ import { inspect } from 'util';
 export const command: Command = new Command(
     'eval',
     {
-        aliases: ['ev'],
+        aliases: ['ev', 'e'],
         category: 'owner',
         ownerOnly: true,
         usage: 'eval [code]',
@@ -15,48 +15,46 @@ export const command: Command = new Command(
     (client: MitsuhaClient, message: Message) => {
         const code = message.content.substr(message.content.indexOf(' ') + 1);
         const sw = new Stopwatch();
-        const em: MessageEmbed = new MessageEmbed();
         let output: any;
+        let err = false;
+        let emoji: string;
+        let type: string;
 
         if (code.trim() == message.content) {
-            return message.channel.send('I need some code to evaluate ...');
+            return message.channel.send('Missing argument: [code]');
         }
 
         sw.start();
         try {
-            output = inspect(eval(code));
-            em.setColor(client.constants.COLORS.success);
-        } catch (err) {
-            output = err;
-            em.setColor(client.constants.COLORS.error);
+            output = eval(code);
+        } catch (error) {
+            output = error;
+            err = true;
         }
-        if (output.length > 2047)
-            return message.channel.send('Output too long.');
+
+        if (err) {
+            emoji = client.constants.EMOJIS.redCross;
+            type = 'error';
+        } else {
+            emoji = client.constants.EMOJIS.greenTick;
+            type = typeof output;
+        }
 
         const time = sw.stop().toString();
+        output = inspect(output);
 
-        em.setAuthor(
-            'Eval',
-            message.author.displayAvatarURL({
-                dynamic: true,
-            })
-        )
-            .setDescription(
-                '`'.repeat(3) +
-                    'ts\n' +
-                    'Node.js version      : ' +
-                    process.version +
-                    '\nDiscord.js version   : v' +
-                    version +
-                    '`'.repeat(3) +
-                    '\n\n' +
-                    '`'.repeat(3) +
-                    'ts\n' +
-                    String(output) +
-                    '`'.repeat(3)
-            )
-            .setFooter(`Done in ${time}`, client.user.displayAvatarURL());
+        if (output.length > 1900)
+            return message.channel.send('Output too long.');
 
-        return message.channel.send(em);
+        let m: string =
+            '**Output**:\n' +
+            '`'.repeat(3) +
+            'ts\n' +
+            String(output) +
+            '`'.repeat(3);
+
+        m += `\n\n${emoji} Node: \`${process.version}\` | Discord.js: \`v${version}\` | \`${time}\` | \`${type}\``;
+
+        return message.channel.send(m);
     }
 );
