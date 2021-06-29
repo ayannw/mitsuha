@@ -59,16 +59,15 @@ export const command: Command = new Command(
     }
 
     const categories = await cats;
+    let description: string = '';
 
     categories.forEach((cat) => {
-      em.addField(
-        '❯❯ **' + up1(cat.name) + '**\n',
-        '> ' + cat.cmds.join(' | ') + '\n'
-      );
+      description += 
+        ':regional_indicator_' + cat.name[0] + ': **' + up1(cat.name) + '**: ' + cat.cmds.join(' | ') + '\n\n';
     });
 
     em.setDescription(
-      `> Prefix for this guild is set to \`${client.config.prefix}\`, type \`${client.config.prefix}help <command>\` to get explanation of a specific command.\n`
+      `> Prefix for this guild is set to \`${client.config.prefix}\`, type \`${client.config.prefix}help <command>\` to get explanation of a specific command.\n${description}`
     );
     return message.channel.send(em);
   }
