@@ -1,4 +1,5 @@
 import * as logger from '#lib/logger';
+import * as server from './server';
 import { __MitsuhaClient__, MitsuhaClient } from '#lib/MitsuhaClient';
 import { execCommand } from '#lib/utils/commandRunner';
 import { Client } from 'discord.js';
@@ -17,6 +18,7 @@ const sw = new Stopwatch();
 const start = (): void => {
   console.clear();
   logger.warn('starting ...');
+  server.run(process.env.API_PORT);
   readFile(process.cwd() + '/media/logo.txt', 'utf-8', (e, f): void => {
     if (e) return logger.error(String(e));
     f.split('\n').forEach((l) => logger.info(l));
@@ -34,6 +36,7 @@ const start = (): void => {
 };
 
 client.once('ready', () => {
+  logger.success('server running on on port: ' + process.env.API_PORT);
   enableSlash(client);
   logger.success('logged in as ' + client.user.tag);
   const t = sw.stop().toString();

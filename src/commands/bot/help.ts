@@ -59,11 +59,17 @@ export const command: Command = new Command(
     }
 
     const categories = await cats;
-    let description: string = '';
+    let description = '';
 
     categories.forEach((cat) => {
-      description += 
-        ':regional_indicator_' + cat.name[0] + ': **' + up1(cat.name) + '**: ' + cat.cmds.join(' | ') + '\n\n';
+      description +=
+        ':regional_indicator_' +
+        cat.name[0] +
+        ': **' +
+        up1(cat.name) +
+        '**: ' +
+        cat.cmds.join(' | ') +
+        '\n\n';
     });
 
     em.setDescription(
