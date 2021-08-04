@@ -1,6 +1,6 @@
 {
   "name": "mitsuha",
-  "version": "2.4.1-1",
+  "version": "2.5.0-stable",
   "main": "dist/Mitsuha.js",
   "os": [
     "!win32",
@@ -45,7 +45,6 @@
     "@sapphire/stopwatch": "^1.0.6",
     "@sapphire/time-utilities": "^1.2.12",
     "@sapphire/utilities": "^1.4.6",
-    "color-convert": "^2.0.1",
     "colorette": "^1.2.2",
     "dayjs": "^1.10.5",
     "discord-api-types": "^0.18.1",
@@ -53,8 +52,8 @@
     "dotenv": "^8.2.0",
     "fastest-levenshtein": "^1.0.12",
     "i18n-iso-countries": "^6.7.0",
+    "koa": "^2.13.1",
     "node-fetch": "^2.6.1",
-    "node-osu": "^2.2.1",
-    "validate-color": "^2.1.1"
+    "node-osu": "^2.2.1"
   }
 }
