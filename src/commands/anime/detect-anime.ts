@@ -63,7 +63,7 @@ export const command: Command = new Command(
       ? (description += `at \`${D.format(anime.from * 1000)}\`.`)
       : (description += `episode: \`${anime.episode}\` at \`${D.format(
           anime.from * 1000
-        )}.`);
+        )}\`.`);
 
     const em = new MessageEmbed()
       .setColor(client.constants.COLORS.normal)
